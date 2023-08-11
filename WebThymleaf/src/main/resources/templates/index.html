@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org/">
+<head>
+<meta charset="ISO-8859-1">
+<title>Employee Management System</title>
+</head>
+<body>
+	<div align="center">
+	<a th:href ="@{/showNewEmployeeFrom}">Add Employee</a>
+		<h1>Employee List</h1>
+		<table border="1px">
+			<thead>
+				<tr>
+					<th>Employee Name</th>
+					<th>Employee Email</th>
+					<th>Action</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="employee :${listEmployee}">
+					<td th:text="${employee.name}"></td>
+					<td th:text="${employee.email}"></td>
+					<td> <a th:href="@{/showFromForUpdate/{id}(id=${employee.id})}" class ="btn btn-primary">Update</a> 
+					<a th:href="@{/deleteEmployee/{id}(id=${employee.id})}" class ="btn btn-danger">Delete </a>
+		
+					
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<div th:if= "${totalPages > 1}">
+		<div class="row col-sm-10">
+		<div class="col-sm-2">
+		Total Rows:[[${totalItem}
+		]]
+		</div>
+		<div class="col-sm-1">
+		<span th:each="i: ${#numbers.sequence(1,totalPages)}">
+		<a th:if="${currentPage!=i}" th:href="@{'/page/'+${i}}">[[${i}]]</a>
+		<span th:unless="${currentPage!=i}">[[${i}]]</span>  &nbsp; &nbsp;
+		</span>
+		</div>
+		<div class="col-sm-1">
+		<a th:if="${currentPage<totalpages}" th:href="@{'/page/' + ${currentPage +1}}">Next</a>
+		<span th:unless="${currentPage < totalPages}">Next</span>
+		</div>
+		<div class="col-sm-1">
+		<a th:if="${currentPage<totalpages}" th:href="@{'/page/' + ${currentPage +1}}">Next</a>
+		<span th:unless="${currentPage < totalPages}">Last</span>
+		</div>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+<bean name="emp1"    class="com.springcore.collection.EMp">
+<property name="phones">
+<list>
+<value>555</value>
+<value>444</value>
+<value>888</value>
+</list>
+</property>
+<property name="address">
+<set>
+
+<value>Delhi</value>
+<value>Kanpur</value>
+<value>thangoan</value>
+</set>
+</property>
+<property name="courses">
+<map>
+
+<entry key="java" value="2 year"/>
+<entry key="python" value="2 year"/>
+<entry key="c" value="2 year"/>
+
+</map>
+</property>
+</bean>
+
+
+
+
+</beans>
+
+
+
+
+
+
